@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+{% for item in categories %}
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5>{{ item.title }}</h5>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}
