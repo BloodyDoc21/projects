@@ -2,6 +2,7 @@ from django import forms
 from .models import News
 import re
 from django.core.exceptions import ValidationError
+from captcha.fields import CaptchaField
 
 class NewsForm(forms.ModelForm):
     class Meta:
@@ -28,3 +29,8 @@ class CommentForm(forms.Form):
     author = forms.CharField(max_length=100, label='Автор')
     email = forms.EmailField(label='Email')
     text = forms.CharField(widget=forms.Textarea, label='Текст')
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(label='Тема', widget=forms.TextInput(attrs={"class": "form-control"}))
+    content = forms.CharField(label='Текст', widget=forms.Textarea(attrs={"class": "form-control", "rows": 5}))
+    captcha = CaptchaField()
